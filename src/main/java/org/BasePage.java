@@ -12,6 +12,8 @@ public class BasePage {
     private By Password = By.name("password");
     private By Login = By.xpath("//input[@value='Log In']");
 
+    private By Overview = By.xpath("//a[normalize-space()='Accounts Overview']");
+
     private static WebDriver driver;
     static WebDriverWait wait;
 
@@ -60,5 +62,25 @@ public class BasePage {
         sendText(password, Password);
         click(Login);
     }
+
+    public void initOverview() throws InterruptedException {
+        click(Overview);
+    }
+
+    public Boolean WaitForMessage(By locator, String message) throws InterruptedException {
+        if( wait.until(ExpectedConditions.textToBe(locator, message)) ){
+            return true;
+        }
+        return false;
+    }
+
+    public String WaitForTitle(By locator) throws InterruptedException {
+       if (elementFind(locator).getText() != null){
+           return getText(locator);
+       }else {
+           return "Not found element";
+       }
+    }
+
 
 }

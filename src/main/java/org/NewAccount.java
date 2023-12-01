@@ -34,7 +34,6 @@ public class NewAccount extends BasePage {
 
     public String openAccount() throws InterruptedException {
         click(OpenAccount);
-       //wait.until(ExpectedConditions.presenceOfElementLocated(MessageSubt));
         if(getText(MessageSubt).isBlank()){
             return "An error occurred while opening a new account";
         }else {

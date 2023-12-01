@@ -2,7 +2,6 @@ package org;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegisterUser extends BasePage {
@@ -31,9 +30,8 @@ public class RegisterUser extends BasePage {
 
     private By BtnConfirmation = By.xpath("//input[@value='Register']");
 
-    private By MensajeSubtitulo = By.xpath("//p[contains(text(),'Your account was created successfully. You are now')]");
+    private By MensajeSubtitulo = By.xpath("//*[@id=\"rightPanel\"]/p"); // //p[contains(text(),'Your account was created successfully. You are now')]
     private String Message= "Your account was created successfully. You are now logged in.";
-
 
     public RegisterUser(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -79,11 +77,11 @@ public class RegisterUser extends BasePage {
         click(BtnConfirmation);
     }
 
-    public Boolean WaitForMessage() throws InterruptedException {
-       if( wait.until(ExpectedConditions.textToBe(MensajeSubtitulo, Message)) ){
-           return true;
-       }
-        return false;
+    public By getMensajeSubtitulo() {
+        return MensajeSubtitulo;
     }
 
+    public String getMessage() {
+        return Message;
+    }
 }

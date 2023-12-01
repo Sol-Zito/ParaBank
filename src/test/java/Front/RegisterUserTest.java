@@ -52,7 +52,7 @@ public class RegisterUserTest {
         Cyrus.writeSsn("H0I 4V7");
 
         test.log(Status.PASS, "Complete user and password");
-        Cyrus.writeUserName("CyrusSuarez2");
+        Cyrus.writeUserName("Cyrus_Suarez7");
         Cyrus.writePassWordAndRePassWord("UYA91XVW1WL", "UYA91XVW1WL");
 
 
@@ -60,7 +60,8 @@ public class RegisterUserTest {
         Cyrus.CheckIn();
 
         test.log(Status.INFO, "Wait for registration");
-        if(Cyrus.WaitForMessage()){
+
+        if(Cyrus.WaitForMessage(Cyrus.getMensajeSubtitulo(), Cyrus.getMessage())){
             test.log(Status.PASS, "Your account was created successfully. You are now logged in.");
         }else {test.log(Status.FAIL, "An error occurred while generating user");}
 
@@ -84,7 +85,7 @@ public class RegisterUserTest {
         Dylan.writeSsn("1-625-477-5628");
 
         test.log(Status.PASS, "Complete user and password");
-        Dylan.writeUserName("Dylan");
+        Dylan.writeUserName("Dylan_Duncan1");
         Dylan.writePassWordAndRePassWord("QGM09YVW9JS","QGM09YVW9JS");
 
 
@@ -92,7 +93,7 @@ public class RegisterUserTest {
         Dylan.CheckIn();
 
         test.log(Status.INFO, "Wait for registration");
-        if(Dylan.WaitForMessage()){
+        if(Dylan.WaitForMessage(Dylan.getMensajeSubtitulo(), Dylan.getMessage())){
             test.log(Status.PASS, "Your account was created successfully. You are now logged in.");
         }else {test.log(Status.FAIL, "An error occurred while generating user");}
 
