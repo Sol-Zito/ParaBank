@@ -12,30 +12,33 @@ public class TransFerFounds extends BasePage {
     /*Transferir Fondos
     ○ Haga clic en <Transferencia de fondos>
     ○ Compruebe que el texto "Transferir fondos" es visible en la pantalla
-
     ○ En el campo <Importe: $> introduzca el importe a transferir
     ○ En el campo <De la cuenta #> seleccione una cuenta
     ○ En el campo <a la cuenta #> seleccione una cuenta distinta a la anterior
     ○ Haga clic en <Transferencia>
     ○ Compruebe que el texto "¡Transferencia completa!" es visible en la pantalla*/
 
-    private By TransferFounds = By.xpath("//a[normalize-space()='Transfer Funds']"); //btn TransferFounds
+    private By TransferFounds = By.xpath("//a[normalize-space()='Transfer Funds']");
 
-    private By Title = By.xpath("//*[@id=\"rightPanel\"]/div/div/h1"); //Transfer Funds
+    public By getTitle() {
+        return Title;
+    }
 
-    private By Amount = By.id("amount"); //xpath("//input[@id='amount']"); //ingresar el amount
+    private By Title = By.xpath("//*[@id=\"rightPanel\"]/div/div/h1");
 
-    private By FromAccount = By.xpath("//*[@id=\"fromAccountId\"]"); //*[@id="fromAccountId"]
+    private By Amount = By.id("amount");
+
+    private By FromAccount = By.xpath("//*[@id=\"fromAccountId\"]");
     private By Account1 = By.xpath("//*[@id=\"fromAccountId\"]/option[1]");
     private By Account2 = By.xpath("//*[@id=\"fromAccountId\"]/option[2]");
 
-    private By ToAccount = By.id("toAccountId"); //xpath("//*[@id="toAccountId"]") //select[@id='toAccountId']
+    private By ToAccount = By.id("toAccountId");
     private By Account1a = By.xpath("//*[@id=\"toAccountId\"]/option[1]");
     private By Account2a = By.xpath("//*[@id=\"toAccountId\"]/option[2]");
 
-    private By BtnTransfer = By.xpath("//input[@value='Transfer']"); //*[@id="rightPanel"]/div/div/form/div[2]/input
+    private By BtnTransfer = By.xpath("//input[@value='Transfer']");
 
-    private By Message = By.xpath("//*[@id=\"rightPanel\"]/div/div/h1"); //h1[@class='title']
+    private By Message = By.xpath("//*[@id=\"rightPanel\"]/div/div/h1");
 
     public TransFerFounds(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -57,6 +60,11 @@ public class TransFerFounds extends BasePage {
             wait.until(ExpectedConditions.elementToBeClickable(Account2)).click();
         }
     }
+    public void fromAccount() throws InterruptedException {
+        elementFind(FromAccount).click();
+        wait.until(ExpectedConditions.elementToBeClickable(Account2)).click();
+
+    }
 
     public void toAccount(int toAccount) throws InterruptedException {
         elementFind(ToAccount).click();
@@ -65,6 +73,12 @@ public class TransFerFounds extends BasePage {
         }else if (toAccount == 2){
             wait.until(ExpectedConditions.elementToBeClickable(Account2a)).click();
         }
+    }
+    public void toAccount() throws InterruptedException {
+        elementFind(ToAccount).click();
+
+        wait.until(ExpectedConditions.elementToBeClickable(Account1a)).click();
+
     }
 
     public void finishProcess() throws InterruptedException {
