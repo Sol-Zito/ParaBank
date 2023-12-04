@@ -30,7 +30,7 @@ public class RegisterUser extends BasePage {
 
     private By BtnConfirmation = By.xpath("//input[@value='Register']");
 
-    private By MensajeSubtitulo = By.xpath("//*[@id=\"rightPanel\"]/p"); // //p[contains(text(),'Your account was created successfully. You are now')]
+    private By MessageSubtitle = By.xpath("//*[@id=\"rightPanel\"]/p");
     private String Message= "Your account was created successfully. You are now logged in.";
 
     public RegisterUser(WebDriver driver, WebDriverWait wait) {
@@ -77,8 +77,8 @@ public class RegisterUser extends BasePage {
         click(BtnConfirmation);
     }
 
-    public By getMensajeSubtitulo() {
-        return MensajeSubtitulo;
+    public By getMessageSubtitle() {
+        return MessageSubtitle;
     }
 
     public String getMessage() {
