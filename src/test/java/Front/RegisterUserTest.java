@@ -52,7 +52,7 @@ public class RegisterUserTest {
         Cyrus.writeSsn("H0I 4V7");
 
         test.log(Status.PASS, "Complete user and password");
-        Cyrus.writeUserName("Cyrus_Suarez7");
+        Cyrus.writeUserName("Cyrus_Suarez8");
         Cyrus.writePassWordAndRePassWord("UYA91XVW1WL", "UYA91XVW1WL");
 
 
