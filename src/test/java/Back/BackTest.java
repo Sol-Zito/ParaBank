@@ -9,10 +9,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import Back.BackUtils.BaseData;
 import org.Reportes.ExtentFactory;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.given;
 
@@ -41,6 +38,7 @@ public class BackTest {
     https://parabank.parasoft.com/parabank/services_proxy/bank/createAccount?customerId=12545&newAccountType=1&fromAccountId=xxxxx*/
 
     @Test
+    @Tag("createAccount")
     public void createAccount() {
         ExtentTest test = extent.createTest("Test createAccount");
         test.log(Status.INFO, "Starting");
@@ -71,6 +69,7 @@ public class BackTest {
     /*Descarga de fondos URL:
     https://parabank.parasoft.com/parabank/services_proxy/bank/transfer?fromAccountId=13566&toAccountId=13677&amount=xxxxx*/
     @Test
+    @Tag("TransferFunds")
     public void TransferFunds () {
         ExtentTest test = extent.createTest("Test TransferFunds");
         test.log(Status.INFO, "Starting");
@@ -99,6 +98,7 @@ public class BackTest {
     https://parabank.parasoft.com/parabank/services_proxy/bank/accounts/13566/transactions/month/All/type/All*/
 
     @Test
+    @Tag("TransactionsByMonth")
     public void TransactionsByMonth () {
         ExtentTest test = extent.createTest("Test TransactionsByMonth");
         test.log(Status.INFO, "Starting");
