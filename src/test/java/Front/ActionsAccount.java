@@ -132,13 +132,19 @@ public class ActionsAccount {
         option1.GoToLogin("Cyrus_Suarez8", "UYA91XVW1WL");
 
         test.log(Status.INFO, "Starting");
+
         option1.transferbtn();
+        test.log(Status.INFO, "Wait for see the title");
+        wait.withTimeout(Duration.ofSeconds(600));
+        option1.WaitForTitle(option1.getTitle());
 
         option1.startProcess("800");
 
         test.log(Status.INFO, "Select Account from");
+
         option1.fromAccount(2);
         test.log(Status.INFO, "Select Account to");
+
         option1.toAccount(1);
         option1.finishProcess();
 
@@ -147,7 +153,6 @@ public class ActionsAccount {
         }else{
             test.log(Status.FAIL, "Error while transfer funds");
         }
-
         option1.close();
     }
 
