@@ -132,7 +132,7 @@ public class UserActions {
 
         option1.transferbtn();
         test.log(Status.INFO, "Wait for see the title");
-        wait.withTimeout(Duration.ofSeconds(600));
+        Thread.sleep(600);
         option1.WaitToSeeTheTitle(option1.getTitle());
 
         option1.startProcess("800");

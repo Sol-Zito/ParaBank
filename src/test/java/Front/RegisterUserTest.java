@@ -79,8 +79,8 @@ public class RegisterUserTest {
         test.log(Status.PASS, "Complete with registration");
         Dylan.writeName("Dylan");
         Dylan.writeLastName("Duncan");
-        Dylan.writePhone("416-7611");
         Dylan.writeAddress("8156 Fusce Road","Apartadó","Haute-Normandie","23882");
+        Dylan.writePhone("416-7611");
         Dylan.writeSsn("1-625-477-5628");
 
         test.log(Status.PASS, "Complete user and password");
