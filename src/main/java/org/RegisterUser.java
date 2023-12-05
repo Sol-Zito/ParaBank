@@ -5,12 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegisterUser extends BasePage {
-    /*Registro
-    ○ Haga clic en <Registro>
-    ○ Rellene el formulario de registro con los datos requeridos
-    ○ Pulse de nuevo en <Registro>.
-    ○ Compruebe que el texto "Su cuenta se ha creado correctamente. En la pantalla se
-    puede ver "You are now logged in".*/
 
     private By BtnRegister = By.xpath("//a[normalize-space()='Register']");
 

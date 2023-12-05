@@ -8,26 +8,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.Objects;
 
 public class CheckAccount extends BasePage{
-    /*Resumen de las cuentas
-    ○ Haga clic en <Resumen de cuentas>
-    ○ Compruebe si el texto "*El saldo incluye depósitos que pueden estar sujetos a
-    retenciones" está visible en la pantalla*/
-
 
     private By MessageXPath = By.xpath("//*[@id=\"accountTable\"]/tfoot/tr/td");
     private String message = "*Balance includes deposits that may be subject to holds";
-
-
-    /*Actividad de la cuenta (cada mes)
-    ○ Haga clic en <Resumen de cuentas>
-    ○ Compruebe que el texto "*El saldo incluye depósitos que pueden estar sujetos a
-    retenciones" es visible en la pantalla
-
-    ○ Haga clic en una cuenta en la columna <Cuenta>.
-    ○ Compruebe que el texto "Detalles de la cuenta" es visible en la pantalla
-    ○ En "Actividad de la cuenta" haga clic en <Periodo de actividad:> y seleccione all
-    ○ En "Actividad de la cuenta" haga clic en <Tipo:> y seleccione all
-    ○ Haga clic en <Ir>*/
 
     private By AccountOne = By.xpath("//*[@id=\"accountTable\"]/tbody/tr[1]/td[1]/a");
     private By AccountTwo = By.xpath("//*[@id=\"accountTable\"]/tbody/tr[1]/td[2]");
@@ -41,7 +24,6 @@ public class CheckAccount extends BasePage{
 
     private By Type = By.id("transactionType");
     private By TypeAll = By.xpath("//*[@id=\"transactionType\"]/option[1]");
-    //debit o credit
 
     private By BtnGo = By.xpath("//input[@value='Go']");
 
@@ -80,10 +62,6 @@ public class CheckAccount extends BasePage{
 
     public By getTitleDetailXpath() {
         return TitleDetailXpath;
-    }
-
-    public String getTitleDetail() {
-        return TitleDetail;
     }
 
     public By getMessageXPath() {

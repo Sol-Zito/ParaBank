@@ -5,18 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
 public class TransFerFounds extends BasePage {
-
-    /*Transferir Fondos
-    ○ Haga clic en <Transferencia de fondos>
-    ○ Compruebe que el texto "Transferir fondos" es visible en la pantalla
-    ○ En el campo <Importe: $> introduzca el importe a transferir
-    ○ En el campo <De la cuenta #> seleccione una cuenta
-    ○ En el campo <a la cuenta #> seleccione una cuenta distinta a la anterior
-    ○ Haga clic en <Transferencia>
-    ○ Compruebe que el texto "¡Transferencia completa!" es visible en la pantalla*/
 
     private By TransferFounds = By.xpath("//a[normalize-space()='Transfer Funds']");
 
@@ -60,11 +49,6 @@ public class TransFerFounds extends BasePage {
             wait.until(ExpectedConditions.elementToBeClickable(Account2)).click();
         }
     }
-    public void fromAccount() throws InterruptedException {
-        elementFind(FromAccount).click();
-        wait.until(ExpectedConditions.elementToBeClickable(Account2)).click();
-
-    }
 
     public void toAccount(int toAccount) throws InterruptedException {
         elementFind(ToAccount).click();
@@ -73,12 +57,6 @@ public class TransFerFounds extends BasePage {
         }else if (toAccount == 2){
             wait.until(ExpectedConditions.elementToBeClickable(Account2a)).click();
         }
-    }
-    public void toAccount() throws InterruptedException {
-        elementFind(ToAccount).click();
-
-        wait.until(ExpectedConditions.elementToBeClickable(Account1a)).click();
-
     }
 
     public void finishProcess() throws InterruptedException {

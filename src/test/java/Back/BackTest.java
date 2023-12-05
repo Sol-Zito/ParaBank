@@ -34,9 +34,6 @@ public class BackTest {
 
     }
 
-    /*Abrir una nueva cuenta URL:
-    https://parabank.parasoft.com/parabank/services_proxy/bank/createAccount?customerId=12545&newAccountType=1&fromAccountId=xxxxx*/
-
     @Test
     @Tag("createAccount")
     public void createAccount() {
@@ -66,8 +63,6 @@ public class BackTest {
 
     }
 
-    /*Descarga de fondos URL:
-    https://parabank.parasoft.com/parabank/services_proxy/bank/transfer?fromAccountId=13566&toAccountId=13677&amount=xxxxx*/
     @Test
     @Tag("TransferFunds")
     public void TransferFunds () {
@@ -93,9 +88,6 @@ public class BackTest {
             test.log(Status.FAIL,"Error transferring funds");
         }
     }
-
-    /*Actividad de la cuenta (cada mes) URL:
-    https://parabank.parasoft.com/parabank/services_proxy/bank/accounts/13566/transactions/month/All/type/All*/
 
     @Test
     @Tag("TransactionsByMonth")
@@ -124,7 +116,6 @@ public class BackTest {
             test.log(Status.FAIL,"Error getting transaction information");
         }
     }
-
 
 
     @AfterAll

@@ -55,13 +55,12 @@ public class RegisterUserTest {
         Cyrus.writeUserName("Cyrus_Suarez8");
         Cyrus.writePassWordAndRePassWord("UYA91XVW1WL", "UYA91XVW1WL");
 
-
         test.log(Status.PASS, "Check in");
         Cyrus.CheckIn();
 
         test.log(Status.INFO, "Wait for registration");
 
-        if(Cyrus.WaitForMessage(Cyrus.getMessageSubtitle(), Cyrus.getMessage())){
+        if(Cyrus.WaitToSeeMessage(Cyrus.getMessageSubtitle(), Cyrus.getMessage())){
             test.log(Status.PASS, "Your account was created successfully. You are now logged in.");
         }else {test.log(Status.FAIL, "An error occurred while generating user");}
 
@@ -93,11 +92,11 @@ public class RegisterUserTest {
         Dylan.CheckIn();
 
         test.log(Status.INFO, "Wait for registration");
-        if(Dylan.WaitForMessage(Dylan.getMessageSubtitle(), Dylan.getMessage())){
+        if(Dylan.WaitToSeeMessage(Dylan.getMessageSubtitle(), Dylan.getMessage())){
             test.log(Status.PASS, "Your account was created successfully. You are now logged in.");
-        }else {test.log(Status.FAIL, "An error occurred while generating user");}
-
-
+        }else {
+            test.log(Status.FAIL, "An error occurred while generating user");
+        }
     }
 
     @AfterEach

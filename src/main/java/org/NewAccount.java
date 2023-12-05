@@ -6,12 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class NewAccount extends BasePage {
-    /*Abrir una nueva cuenta
-    ○ Haga clic en <Abrir nueva cuenta>.
-    ○ En el apartado "¿Qué tipo de cuenta desea abrir?" seleccione la opción <SAVINGS>.
-    ○ Haga clic en <Abrir nueva cuenta>
-    ○ Compruebe si el texto "Congratulations, your account is now open." está visible en
-    la pantalla*/
 
     private By NewAccount = By.xpath("//a[normalize-space()='Open New Account']");
 

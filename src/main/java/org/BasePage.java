@@ -44,10 +44,6 @@ public class BasePage {
         this.elementFind(locator).sendKeys(inputText);
     }
 
-    protected void sendKey(CharSequence key, By locator) throws InterruptedException {
-        this.elementFind(locator).sendKeys(key);
-    }
-
     protected void click(By locator) throws InterruptedException {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
         this.elementFind(locator).click();
@@ -67,14 +63,15 @@ public class BasePage {
         click(Overview);
     }
 
-    public Boolean WaitForMessage(By locator, String message) throws InterruptedException {
+    public Boolean WaitToSeeMessage(By locator, String message) throws InterruptedException {
         if( wait.until(ExpectedConditions.textToBe(locator, message)) ){
             return true;
+
         }
         return false;
     }
 
-    public String WaitForTitle(By locator) throws InterruptedException {
+    public String WaitToSeeTheTitle(By locator) throws InterruptedException {
        if (elementFind(locator).getText() != null){
            return getText(locator);
        }else {

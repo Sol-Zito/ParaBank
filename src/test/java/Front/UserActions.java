@@ -33,7 +33,6 @@ public class UserActions {
         wait = new WebDriverWait(driver, Duration.ofSeconds(3));
     }
 
-
     @Test
     @Tag("newaccount")
     @Tag("ALL")
@@ -49,7 +48,6 @@ public class UserActions {
         test.log(Status.INFO, "New account Savings");
         newAccount.newAccountSAVINGS();
         test.log(Status.INFO, "Open account");
-
         String message = newAccount.openAccount();
 
         if(message.contains("Congratulations")){
@@ -57,7 +55,6 @@ public class UserActions {
         }else{
             test.log(Status.FAIL, "An error occurred while opening a new account");
         }
-
         newAccount.close();
     }
 
@@ -77,7 +74,7 @@ public class UserActions {
         account.initOverview();
         test.log(Status.INFO, "Open view");
 
-        if(account.WaitForMessage(account.getMessageXPath(), account.getMessage())){
+        if(account.WaitToSeeMessage(account.getMessageXPath(), account.getMessage())){
             test.log(Status.PASS, "*Balance includes deposits that may be subject to holds");
         }else{
             test.log(Status.FAIL, "An error occurred while check account");
@@ -104,7 +101,7 @@ public class UserActions {
 
         test.log(Status.INFO, "Select Account");
         account.selectAccount("one");
-        String detailTitle = account.WaitForTitle(account.getTitleDetailXpath());
+        String detailTitle = account.WaitToSeeTheTitle(account.getTitleDetailXpath());
         if(Objects.equals(detailTitle, "Not found element")){
             test.log(Status.FAIL, detailTitle);
         }else{
@@ -136,7 +133,7 @@ public class UserActions {
         option1.transferbtn();
         test.log(Status.INFO, "Wait for see the title");
         wait.withTimeout(Duration.ofSeconds(600));
-        option1.WaitForTitle(option1.getTitle());
+        option1.WaitToSeeTheTitle(option1.getTitle());
 
         option1.startProcess("800");
 
@@ -148,7 +145,7 @@ public class UserActions {
         option1.toAccount(1);
         option1.finishProcess();
 
-        if(option1.WaitForMessage(option1.getMessage(), "Transfer Funds")){
+        if(option1.WaitToSeeMessage(option1.getMessage(), "Transfer Funds")){
             test.log(Status.INFO, "successful transfer");
         }else{
             test.log(Status.FAIL, "Error while transfer funds");
