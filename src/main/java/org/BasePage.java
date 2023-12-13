@@ -66,17 +66,16 @@ public class BasePage {
     public Boolean WaitToSeeMessage(By locator, String message) throws InterruptedException {
         if( wait.until(ExpectedConditions.textToBe(locator, message)) ){
             return true;
-
         }
         return false;
     }
 
     public String WaitToSeeTheTitle(By locator) throws InterruptedException {
-       if (elementFind(locator).getText() != null){
+      if (elementFind(locator).getText() != null){
            return getText(locator);
-       }else {
-           return "Not found element";
-       }
+      }else {
+          return "Not found element";
+      }
     }
 
 

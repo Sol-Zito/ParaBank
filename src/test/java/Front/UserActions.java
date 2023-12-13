@@ -14,7 +14,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Objects;
 
 public class UserActions {
     public WebDriver driver;
@@ -44,14 +43,13 @@ public class UserActions {
         newAccount.getUrl("https://parabank.parasoft.com/parabank/index.htm");
         test.log(Status.INFO, "Login");
         newAccount.GoToLogin("Cyrus_Suarez8", "UYA91XVW1WL");
-
         test.log(Status.INFO, "New account Savings");
         newAccount.newAccountSAVINGS();
         test.log(Status.INFO, "Open account");
-        String message = newAccount.openAccount();
-
-        if(message.contains("Congratulations")){
-            test.log(Status.PASS, "Congratulations, your account is now open.");
+        newAccount.openAccount();
+        Boolean message = newAccount.WaitToSeeMessage(newAccount.getMessageSubt(), newAccount.getCongratulations());
+        if(message){
+            test.log(Status.PASS, newAccount.getCongratulations());
         }else{
             test.log(Status.FAIL, "An error occurred while opening a new account");
         }
@@ -93,27 +91,31 @@ public class UserActions {
         account.setUp();
         account.getUrl("https://parabank.parasoft.com/parabank/index.htm");
         test.log(Status.INFO, "Login");
-        account.GoToLogin("Cyrus_Suarez8", "UYA91XVW1WL");
+        try{
+            account.GoToLogin("Cyrus_Suarez8", "UYA91XVW1WL");
+            test.log(Status.INFO, "CheckAccount");
+            account.initOverview();
+            test.log(Status.INFO, "Open view");
 
-        test.log(Status.INFO, "CheckAccount");
-        account.initOverview();
-        test.log(Status.INFO, "Open view");
-
-        test.log(Status.INFO, "Select Account");
-        account.selectAccount("one");
-        String detailTitle = account.WaitToSeeTheTitle(account.getTitleDetailXpath());
-        if(Objects.equals(detailTitle, "Not found element")){
-            test.log(Status.FAIL, detailTitle);
-        }else{
-            test.log(Status.PASS, "Page details account");
+            test.log(Status.INFO, "Select Account");
+            account.selectAccount("one");
+            Boolean detailTitle = account.WaitToSeeMessage(account.getTitleDetailXpath(), account.getTitleDetail());
+            if(detailTitle){
+                test.log(Status.PASS, "Page account details");
+                account.selectPeriod();
+                account.selectType();
+                account.finishTrans();
+                String information = account.information();
+                test.log(Status.INFO, information);
+            }else{
+                test.log(Status.FAIL, "Not found element");
+            }
+        }catch (Exception error) {
+            test.log(Status.FAIL, error.getLocalizedMessage());
+            throw error;
         }
-
-        account.selectPeriod("all");
-        String information = account.information();
-
-        test.log(Status.INFO, information);
-
         account.close();
+
     }
 
     @Test

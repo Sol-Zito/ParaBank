@@ -7,33 +7,34 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class NewAccount extends BasePage {
 
-    private By NewAccount = By.xpath("//a[normalize-space()='Open New Account']");
+    private By newAccount = By.xpath("//a[normalize-space()='Open New Account']");
 
-    private By AccountType = By.xpath("//select[@id='type']");
+    private By accountType = By.xpath("//select[@id='type']");
     private By SAVINGS = By.xpath("//*[@id=\"type\"]/option[2]");
 
-    private By OpenAccount = By.xpath("//input[@value='Open New Account']");
-    private By MessageSubt = By.xpath("//*[@id=\"rightPanel\"]/div/div/p[1]");
-    String Congratulations = "Congratulations, your account is now open.";
+    private By openAccount = By.xpath("//*[@id=\"rightPanel\"]/div/div/form/div/input");
+    private By messageSubt = By.xpath("//*[@id=\"rightPanel\"]/div/div/p[1]");
+    String congratulations = "Congratulations, your account is now open.";
 
     public NewAccount(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
 
     public void newAccountSAVINGS() throws InterruptedException {
-        click(NewAccount);
-        click(AccountType);
+        click(newAccount);
+        click(accountType);
         wait.until(ExpectedConditions.elementToBeClickable(SAVINGS)).click();
     }
 
-    public String openAccount() throws InterruptedException {
-        click(OpenAccount);
-        if(getText(MessageSubt).isBlank()){
-            return "An error occurred while opening a new account";
-        }else {
-            return getText(MessageSubt);
-        }
+    public void openAccount() throws InterruptedException {
+        click(openAccount);
     }
 
+    public String getCongratulations() {
+        return congratulations;
+    }
 
+    public By getMessageSubt() {
+        return messageSubt;
+    }
 }

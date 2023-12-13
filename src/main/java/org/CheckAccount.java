@@ -20,7 +20,6 @@ public class CheckAccount extends BasePage{
 
     private By ActivityPeriod = By.id("month");
     private By AllPeriod = By.xpath("//*[@id=\"month\"]/option[1]");
-    private By January = By.xpath("//*[@id=\"month\"]/option[2]");
 
     private By Type = By.id("transactionType");
     private By TypeAll = By.xpath("//*[@id=\"transactionType\"]/option[1]");
@@ -40,15 +39,17 @@ public class CheckAccount extends BasePage{
         } else { click(AccountTwo);}
     }
 
-    public void selectPeriod (String month) throws InterruptedException {
+    public void selectPeriod () throws InterruptedException {
         click(ActivityPeriod);
-        if(Objects.equals(month, "todos") || Objects.equals(month, "all")) {
-            wait.until(ExpectedConditions.elementToBeClickable(AllPeriod)).click();
-        } else {click(January);}
+        wait.until(ExpectedConditions.elementToBeClickable(AllPeriod)).click();
+    }
 
+    public void selectType() throws InterruptedException {
         click(Type);
         wait.until(ExpectedConditions.elementToBeClickable(TypeAll));
+    }
 
+    public void finishTrans() throws InterruptedException {
         click(BtnGo);
     }
 
@@ -70,6 +71,10 @@ public class CheckAccount extends BasePage{
 
     public String getMessage() {
         return message;
+    }
+
+    public String getTitleDetail() {
+        return TitleDetail;
     }
 }
 

@@ -9,10 +9,6 @@ public class TransFerFounds extends BasePage {
 
     private By TransferFounds = By.xpath("//a[normalize-space()='Transfer Funds']");
 
-    public By getTitle() {
-        return Title;
-    }
-
     private By Title = By.xpath("//*[@id=\"rightPanel\"]/div/div/h1");
 
     private By Amount = By.id("amount");
@@ -65,5 +61,8 @@ public class TransFerFounds extends BasePage {
 
     public By getMessage() {
         return Message;
+    }
+    public By getTitle() {
+        return Title;
     }
 }
